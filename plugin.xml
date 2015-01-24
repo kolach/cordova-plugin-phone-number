@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.assuredlabor.cordova.phonenumber"
+    version="0.0.1">
+
+    <name>PhoneNumber</name>
+    <description>
+        This plugin will return the phone number.
+    </description>
+    <license>MIT</license>
+
+    <engines>
+        <!--
+            Cordova 2.8.0 is all I have tested on - it should work fine with earlier versions.
+            Please modify the below line, test, and submit a PR if it works for you.
+        -->
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <js-module src="www/PhoneNumberPlugin.js">
+       <clobbers target="cordova.getPhoneNumber" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PhoneNumber">
+                <param name="android-package" value="com.assuredlabor.cordova.PhoneNumber"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/PhoneNumber.java" target-dir="src/com/assuredlabor/cordova" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+        </config-file>
+
+    </platform>
+
+</plugin>
