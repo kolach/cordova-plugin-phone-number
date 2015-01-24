@@ -12,18 +12,18 @@ import android.content.Context;
 import android.telephony.TelephonyManager;
 
 public class PhoneNumber extends CordovaPlugin {
-		@Override
-        public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-			if (action.equals("getPhoneNumber")) {
-				TelephonyManager telephonyManager =
-						(TelephonyManager)this.cordova.getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-				String result = telephonyManager.getLine1Number();
-				callbackContext.success(result);
-				return true;
-			}
-			callbackContext.success("N/A");
-			return false;
+
+	@Override
+	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+		if (action.equals("getPhoneNumber")) {
+			TelephonyManager telephonyManager =
+					(TelephonyManager)this.cordova.getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+			String result = telephonyManager.getLine1Number();
+			callbackContext.success(result);
+			return true;
 		}
+		callbackContext.success("N/A");
+		return false;
 	}
 
 }
