@@ -32,4 +32,5 @@ Written by [Nick Chistyakov](https://github.com/kolach) at
 
 Code based on the following posts:
 
+* [macdonst/TelephoneNumberPlugin](https://github.com/macdonst/TelephoneNumberPlugin)
 * [Stackoverflow](http://stackoverflow.com/questions/23839686/get-the-user-phone-number-with-cordova-phonegap)
