@@ -1,6 +1,7 @@
-# Cordova PhoneNumber plugin
+# Cordova PhoneNumber plugin for Android
 
-Gets the number of your phone.
+Gets the number of the phone.
+It should work if the phone number is available on Settings -> About Phone -> Status -> My phone number.
 
 ## Installation
 
