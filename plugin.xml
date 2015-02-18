@@ -19,7 +19,7 @@
     </engines>
 
     <js-module src="www/PhoneNumberPlugin.js">
-       <clobbers target="cordova.getPhoneNumber" />
+       <clobbers target="cordova" />
     </js-module>
 
     <!-- android -->
