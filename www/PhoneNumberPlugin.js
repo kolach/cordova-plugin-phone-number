@@ -3,7 +3,8 @@ var exec = require("cordova/exec");
 module.exports = {
   getPhoneNumber: getPhoneNumber,
   getNetworkCountryCode: getNetworkCountryCode,
-  getSimCountryCode: getSimCountryCode
+  getSimCountryCode: getSimCountryCode,
+  getAll: getAll
 };
 
 var $q;
