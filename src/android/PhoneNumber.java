@@ -13,17 +13,42 @@ import android.telephony.TelephonyManager;
 
 public class PhoneNumber extends CordovaPlugin {
 
+
+	/**
+	 * Actions the HockeyAppPlugin can parse.
+	 */
+	public enum DefinedAction {
+		getPhoneNumber, 		// registers HockeyApp with tocken
+		getNetworkCountryCode, 	// crash report
+		getSimCountryCode       // show feedback
+	};
+
+
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		if (action.equals("getPhoneNumber")) {
-			TelephonyManager telephonyManager =
-					(TelephonyManager)this.cordova.getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-			String result = telephonyManager.getLine1Number();
-			callbackContext.success(result);
-			return true;
+
+		DefinedAction definedAction = DefinedAction.valueOf(action);
+		TelephonyManager telephonyManager =
+				(TelephonyManager) this.cordova.getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+
+		switch (definedAction) {
+			case getPhoneNumber:
+				String result = telephonyManager.getLine1Number();
+				callbackContext.success(result);
+				break;
+
+			case getNetworkCountryCode:
+				String result = telephonyManager.getNetworkCountryIso();
+				callbackContext.success(result);
+				break;
+
+			case getSimCountryCode:
+				String result = telephonyManager.getSimCountryIso();
+				callbackContext.success(result);
+				break;
 		}
-		callbackContext.success("N/A");
-		return false;
+
+		return true;
 	}
 
 }

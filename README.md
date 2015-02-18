@@ -14,16 +14,18 @@ with:
 
 ## Use from Javascript
 
-If you are using jQuery, use:
-
-    cordova.getPhoneNumber().then(function (number) {
-        $('.number').text(number);
-    });
-
-If not:
+Works with Angular only:
 
     cordova.getPhoneNumber(function (number) {
         alert(number);
+    });
+
+    cordova.getNetworkCountryCode(function (countryCode) {
+        alert(countryCode);
+    });
+
+    cordova.getSimCountryCode(function (countryCode) {
+        alert(countryCode);
     });
 
 ## Credits
@@ -34,4 +36,5 @@ Written by [Nick Chistyakov](https://github.com/kolach) at
 Code based on the following posts:
 
 * [macdonst/TelephoneNumberPlugin](https://github.com/macdonst/TelephoneNumberPlugin)
+* [vliesaputra/DeviceInformationPlugin](https://github.com/vliesaputra/DeviceInformationPlugin)
 * [Stackoverflow](http://stackoverflow.com/questions/23839686/get-the-user-phone-number-with-cordova-phonegap)
