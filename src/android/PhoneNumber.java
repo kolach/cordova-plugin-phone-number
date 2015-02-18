@@ -31,19 +31,21 @@ public class PhoneNumber extends CordovaPlugin {
 		TelephonyManager telephonyManager =
 				(TelephonyManager) this.cordova.getActivity().getSystemService(Context.TELEPHONY_SERVICE);
 
+		String result;
+
 		switch (definedAction) {
 			case getPhoneNumber:
-				String result = telephonyManager.getLine1Number();
+				result = telephonyManager.getLine1Number();
 				callbackContext.success(result);
 				break;
 
 			case getNetworkCountryCode:
-				String result = telephonyManager.getNetworkCountryIso();
+				result = telephonyManager.getNetworkCountryIso();
 				callbackContext.success(result);
 				break;
 
 			case getSimCountryCode:
-				String result = telephonyManager.getSimCountryIso();
+				result = telephonyManager.getSimCountryIso();
 				callbackContext.success(result);
 				break;
 		}
