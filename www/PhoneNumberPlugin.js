@@ -6,10 +6,18 @@ module.exports = {
   getSimCountryCode: getSimCountryCode
 };
 
+var $q;
+
+function q() {
+    if (!$q) {
+        var injector = angular.injector(["ng"]);
+        $q = injector.get("$q");
+    }
+    return $q;
+}
+
 function getDeferred() {
-  var injector = angular.injector(["ng"]);
-  var $q = injector.get("$q");
-  return $q.defer();
+  return q().defer();
 }
 
 function execute(command, args) {
@@ -18,14 +26,22 @@ function execute(command, args) {
   return deferred.promise;
 }
 
-function getPhoneNumber(token) {
+function getPhoneNumber() {
   return execute("getPhoneNumber", []);
 }
 
-function getNetworkCountryCode(token) {
+function getNetworkCountryCode() {
   return execute("getNetworkCountryCode", []);
 }
 
-function getSimCountryCode(token) {
+function getSimCountryCode() {
   return execute("getSimCountryCode", []);
+}
+
+function getAll() {
+    return q().all({
+        phoneNumber         : pn.getPhoneNumber(),
+        networkCountryCode  : pn.getNetworkCountryCode(),
+        simCountryCode      : pn.getSimCountryCode()
+    });
 }
