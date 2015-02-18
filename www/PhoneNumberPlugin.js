@@ -41,8 +41,8 @@ function getSimCountryCode() {
 
 function getAll() {
     return q().all({
-        phoneNumber         : pn.getPhoneNumber(),
-        networkCountryCode  : pn.getNetworkCountryCode(),
-        simCountryCode      : pn.getSimCountryCode()
+        phoneNumber         : getPhoneNumber(),
+        networkCountryCode  : getNetworkCountryCode(),
+        simCountryCode      : getSimCountryCode()
     });
 }
